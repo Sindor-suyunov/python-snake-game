@@ -21,6 +21,10 @@ while not game_over:
         snake.eat()
         food.refresh()
 
+    # crash with wall
+    if snake.isNearToWall():
+        game_over = True
+
 
 screen.screen.exitonclick()
 

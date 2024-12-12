@@ -1,4 +1,5 @@
 from turtle import Turtle
+import screen
 
 DISTANCE = 20
 BEGIN_ITEMS_COORDS = ((0,0), (-20,0), (-40,0))
@@ -49,3 +50,18 @@ class Snake:
 
     def eat(self):
         self.createItem(self.items[-1].position())
+
+    def isNearToWall(self)->bool :
+        xCor = int(self.head.xcor())
+        yCor = int(self.head.ycor())
+
+        WIDTH = screen.WIDTH // 2
+        HEIGHT = screen.HEIGHT // 2
+
+        if xCor + DISTANCE > WIDTH or xCor - DISTANCE < -1 * WIDTH:
+            return True
+
+        if yCor + DISTANCE > HEIGHT or yCor - DISTANCE < -1 * HEIGHT:
+            return True
+
+        return False
