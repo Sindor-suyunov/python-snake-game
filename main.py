@@ -1,15 +1,20 @@
-from time import sleep
-from turtle import Screen
+from screen import MyScreen
 from snake import Snake
+import time
 
 snake = Snake()
-screen = Screen()
+screen = MyScreen()
+screen.addListenersToSnake(snake)
 
+game_over = False
 
-while True:
+while not game_over:
+    screen.screen.update()
+    time.sleep(0.1)
     snake.move()
-    sleep(0.1)
+
+
+screen.screen.exitonclick()
 
 
 
-screen.exitonclick()
