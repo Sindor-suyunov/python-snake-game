@@ -12,13 +12,15 @@ class Snake:
     def __init__(self):
         self.items = []
         for coor in BEGIN_ITEMS_COORDS:
-            self.createItem(coor[0], coor[1])
+            self.createItem(coor)
         self.head = self.items[0]
+        self.head.color("red")
+        self.head.shape("circle")
 
-    def createItem(self, x: int, y: int):
+    def createItem(self, position):
         item = Turtle()
         item.penup()
-        item.goto(x, y)
+        item.goto(position)
         item.color('white')
         item.shape('square')
         self.items.append(item)
@@ -45,3 +47,6 @@ class Snake:
     def right(self):
         if self.head.heading() != LEFT:
             self.head.setheading(RIGHT)
+
+    def eat(self):
+        self.createItem(self.items[-1].position())
