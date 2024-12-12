@@ -15,14 +15,13 @@ class Snake:
             self.createItem(coor)
         self.head = self.items[0]
         self.head.color("red")
-        self.head.shape("circle")
 
     def createItem(self, position):
         item = Turtle()
         item.penup()
         item.goto(position)
         item.color('white')
-        item.shape('square')
+        item.shape('circle')
         self.items.append(item)
 
     def move(self):

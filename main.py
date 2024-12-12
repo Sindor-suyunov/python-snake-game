@@ -13,7 +13,7 @@ game_over = False
 while not game_over:
     # moving snake
     screen.screen.update()
-    time.sleep(0.1)
+    time.sleep(0.15)
     snake.move()
 
     # eat the food
