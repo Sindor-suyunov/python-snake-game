@@ -13,7 +13,7 @@ game_over = False
 while not game_over:
     # moving snake
     screen.screen.update()
-    time.sleep(0.15)
+    time.sleep(0.1)
     snake.move()
 
     # eat the food
@@ -25,6 +25,11 @@ while not game_over:
     if snake.isNearToWall():
         game_over = True
 
+    # crash with tail
+    if snake.isNearToTail():
+        game_over = True
+
+snake.showGameOver()
 
 screen.screen.exitonclick()
 

@@ -1,7 +1,8 @@
 from turtle import Turtle
 import screen
 
-DISTANCE = 20
+DISTANCE = 10
+MOVE_DISTANCE = 20
 BEGIN_ITEMS_COORDS = ((0,0), (-20,0), (-40,0))
 UP = 90
 DOWN = 270
@@ -11,6 +12,7 @@ RIGHT = 0
 class Snake:
 
     def __init__(self):
+        self.score = 0
         self.items = []
         for coor in BEGIN_ITEMS_COORDS:
             self.createItem(coor)
@@ -30,7 +32,7 @@ class Snake:
             new_x = self.items[item - 1].xcor()
             new_y = self.items[item - 1].ycor()
             self.items[item].goto(new_x, new_y)
-        self.head.forward(DISTANCE)
+        self.head.forward(MOVE_DISTANCE)
 
     def up(self):
         if self.head.heading() != DOWN:
@@ -49,6 +51,7 @@ class Snake:
             self.head.setheading(RIGHT)
 
     def eat(self):
+        self.score += 1
         self.createItem(self.items[-1].position())
 
     def isNearToWall(self)->bool :
@@ -65,3 +68,15 @@ class Snake:
             return True
 
         return False
+
+    def isNearToTail(self):
+        for index in range(1, len(self.items)):
+            if self.head.distance(self.items[index].position()) < DISTANCE:
+                return True
+        return False
+
+    def showGameOver(self):
+        score = Turtle()
+        score.color("white")
+        score.hideturtle()
+        score.write(f"GAME OVER.(your score: {self.score})", align="center", font=("Courier", 24, "normal"))
