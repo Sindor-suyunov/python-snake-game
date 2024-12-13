@@ -61,13 +61,7 @@ class Snake:
         WIDTH = screen.WIDTH // 2
         HEIGHT = screen.HEIGHT // 2
 
-        if xCor + DISTANCE > WIDTH or xCor - DISTANCE < -1 * WIDTH:
-            return True
-
-        if yCor + DISTANCE > HEIGHT or yCor - DISTANCE < -1 * HEIGHT:
-            return True
-
-        return False
+        return xCor + DISTANCE > WIDTH or xCor - DISTANCE < -1 * WIDTH or yCor + DISTANCE > HEIGHT or yCor - DISTANCE < -1 * HEIGHT
 
     def isNearToTail(self):
         for index in range(1, len(self.items)):
