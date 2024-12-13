@@ -17,7 +17,7 @@ while not game_over:
     snake.move()
 
     # eat the food
-    if snake.head.distance(food.xcor(), food.ycor()) < DISTANCE:
+    if snake.head.distance(food.xcor(), food.ycor()) < DISTANCE * 2:
         snake.eat()
         food.refresh()
 
